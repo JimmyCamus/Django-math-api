@@ -16,9 +16,12 @@ This project is a math API, in which different problems can be solved, so far so
 ### Math libraries
 - Sympy
 
-### Instructions 
-- clone the repo
-- cd to repo
-- run pip install -r requirements.txt
-- run python manage.py migrate
-- run python manage.py runserver
+## Documentation
+Click here to see the [Documentation](https://documenter.getpostman.com/view/19464642/UyrGAZdK)
+
+## Instructions 
+1. clone the repo
+2. cd to repo
+3. run ```pip install -r requirements.txt```
+4. run ```python manage.py migrate```
+5. run ```python manage.py runserver```
