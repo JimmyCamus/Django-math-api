@@ -1,0 +1,1 @@
+from .utils import newton_rapson_method 

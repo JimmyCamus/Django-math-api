@@ -7,7 +7,7 @@ TEST_CACHE_SETTING = {
 }
 
 
-class FundamentalsTestCase(TestCase):
+class NumericalMethodsTestCase(TestCase):
     @override_settings(CACHES=TEST_CACHE_SETTING)
     def test_bisection_method(self):
         client = APIClient()
@@ -24,3 +24,20 @@ class FundamentalsTestCase(TestCase):
 
         self.assertEqual(json.loads(response.content),
                          {'result': 1.365203857421875})
+
+    @override_settings(CACHES=TEST_CACHE_SETTING)
+    def test_newton_raphson_method(self):
+        client = APIClient()
+        response = client.post(
+            '/api/numericalmethods/newthon-raphson/',
+            {
+                'initial_point': 1.4,
+                'funct': 'x**3 + 4*x**2 - 10',
+                'derivate': '3*x**2 + 8*x',
+                'epsilon': 0.00005,
+            },
+            format='multipart'
+        )
+
+        self.assertEqual(json.loads(response.content),
+                         {'result': 1.36523001341411})
