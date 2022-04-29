@@ -14,3 +14,9 @@ class NewtonRaphsonSerializer(serializers.Serializer):
     epsilon = serializers.FloatField()
     funct = serializers.CharField()
     derivate = serializers.CharField()
+
+
+class FidexPointSerializer(serializers.Serializer):
+    initial_point = serializers.FloatField()
+    epsilon = serializers.FloatField()
+    expression = serializers.CharField()
