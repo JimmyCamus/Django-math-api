@@ -41,3 +41,19 @@ class NumericalMethodsTestCase(TestCase):
 
         self.assertEqual(json.loads(response.content),
                          {'result': 1.36523001341411})
+
+    @override_settings(CACHES=TEST_CACHE_SETTING)
+    def test_fixed_point_method(self):
+        client = APIClient()
+        response = client.post(
+            '/api/numericalmethods/fixed-point/',
+            {
+                'initial_point': 1,
+                'epsilon': 0.00005,
+                'expression': '((10 - x**3) / 4)**(1/2)',
+            },
+            format='multipart'
+        )
+
+        self.assertEqual(json.loads(response.content),
+                         {'result': 1.3652423837188388})
