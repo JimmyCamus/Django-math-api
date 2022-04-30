@@ -9,7 +9,7 @@ TEST_CACHE_SETTING = {
 
 class NumericalMethodsTestCase(TestCase):
     @override_settings(CACHES=TEST_CACHE_SETTING)
-    def test_bisection_method(self):
+    def test_bisection_method_converges(self):
         client = APIClient()
         response = client.post(
             '/api/numericalmethods/bisection/',
@@ -26,7 +26,7 @@ class NumericalMethodsTestCase(TestCase):
                          {'result': 1.365203857421875})
 
     @override_settings(CACHES=TEST_CACHE_SETTING)
-    def test_newton_raphson_method(self):
+    def test_newton_raphson_method_converges(self):
         client = APIClient()
         response = client.post(
             '/api/numericalmethods/newthon-raphson/',
@@ -43,7 +43,7 @@ class NumericalMethodsTestCase(TestCase):
                          {'result': 1.36523001341411})
 
     @override_settings(CACHES=TEST_CACHE_SETTING)
-    def test_fixed_point_method(self):
+    def test_fixed_point_method_converges(self):
         client = APIClient()
         response = client.post(
             '/api/numericalmethods/fixed-point/',
