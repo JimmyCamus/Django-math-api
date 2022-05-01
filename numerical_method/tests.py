@@ -93,9 +93,8 @@ class NumericalMethodsTestCase(TestCase):
                          {'result': 1.3652423837188388})
 
     @override_settings(CACHES=TEST_CACHE_SETTING)
-    def test_fixed_point_method_converges(self):
+    def test_fixed_point_method_diverges(self):
         client = APIClient()
-        #x**3 + 4*x**2 - 10
         response = client.post(
             '/api/numericalmethods/fixed-point/',
             {
