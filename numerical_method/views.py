@@ -3,9 +3,11 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 
 from . import serializers
-from .bisection_method_package import bisection_method
-from .newton_raphson_package import newton_rapson_method
-from .fixed_point_method_package import fixed_method
+from .packages import (
+    bisection_method,
+    newton_rapson_method,
+    fixed_point_method,
+)
 
 
 class BisectionMethod(APIView):
@@ -69,7 +71,7 @@ class FixedPointMethod(APIView):
         epsilon = serializer.validated_data.get('epsilon')
 
         try:
-            result = fixed_method(initial_point, epsilon, expression)
+            result = fixed_point_method(initial_point, epsilon, expression)
             return Response({'result': result}, status=status.HTTP_200_OK)
         except Exception as e:
             return Response({'error': 'There is not a solution'}, status=status.HTTP_200_OK)
