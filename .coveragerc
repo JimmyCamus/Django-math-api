@@ -6,3 +6,8 @@ omit=
     */migrations/*
     */__init__.py
     /usr/lib/python3/dist-packages/*
+    */urls.py
+    */settings/*
+    */wsgi.py
+    manage.py
+    fabfile.py
